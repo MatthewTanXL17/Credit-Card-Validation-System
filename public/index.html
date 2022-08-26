@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment</title>
+
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <form action="https://localhost:5000/" method="post">
+            <div class="inputBox">
+                <label>Card Holder: <input type="text" class="card-holder-input" placeholder="Nathan"></label>
+            </div>
+            <div class="inputBox">
+                <label>Card Number: <input type="text" class="card-number-input" placeholder="Card Number" data-mask="0000 0000 0000 0000 000"></label>
+            </div>
+            <div class="flexbox">
+                <div class="inputBox">
+                    <label>Expiry Date: <input type="text" class="expiry-input" placeholder="00 00" data-mask="00 / 00"></label>
+                </div>
+                <div class="inputBox">
+                    <label>CVV: <input type="text" maxlength="4" class="cvv-input" placeholder="000 / 0000" data-mask="0000"></label>
+                </div>
+            </div>
+            <input type="submit" value="submit" class="submit-btn">
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    
+</body>
+</html>

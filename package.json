@@ -1,0 +1,23 @@
+{
+  "name": "hivekind-evaluation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthewTanXL17/hivekind-evaluation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatthewTanXL17/hivekind-evaluation/issues"
+  },
+  "homepage": "https://github.com/MatthewTanXL17/hivekind-evaluation#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1"
+  }
+}
