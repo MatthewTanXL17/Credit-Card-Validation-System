@@ -31,16 +31,6 @@ app.use(function(req, res, next){
 
 
 // api routes
-/*
-app.get('/', (req, res) => {
-    req.flash('error', `You've been successfully redirected to the Message route!`)
-    res.redirect('/message')
-})
- 
-app.get('/message', (req, res) => {
-    res.render('message')
-})
-*/
 app.get('/', (req,res) => {
     res.render('index')
 })
@@ -52,36 +42,46 @@ app.post('/', (req,res)=>{
     let len = req.body.number.length
     
     if(month == 0 || month > 12){
-        req.flash('error', `Month is invalid`)
+        req.flash('error', `Invalid Month Entered!`)
         res.redirect('/')
     }
     else if(year < moment().year().toString().substring(2) || (month < (moment().month() + 1) && year == (moment().year().toString().substring(2)))){
-        req.flash('error', `Sorry, but your credit card has expired!`)
+        req.flash('error', `credit card has expired!`)
         res.redirect('/')
     }
     else{
-        if(len <19){
+        if(len <15){
             req.flash('error', `Card number must be between 16 - 19 digits long!`)
             res.redirect('/')
         }
         else{
-            if(num == 34 || num == 37){
-                if(req.body.cvv.length != 4){
-                    req.flash('error', `CVV for American Express cards must have 4 digits!`)
+            const arr = (req.body.number + '').split('').reverse().map(x => parseInt(x));
+            const lastDigit = arr.shift();
+            let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + ((val *= 2) > 9 ? val - 9 : val)),0);
+            sum += lastDigit;
+            if (sum % 10 !== 0){
+                req.flash('error', `Invalid Credit Card Number!`)
+                res.redirect('/')
+            }
+            else{
+                if(num == 34 || num == 37){
+                    if(req.body.cvv.length != 4){
+                        req.flash('error', `CVV for American Express cards must have 4 digits!`)
+                        res.redirect('/')
+                    }
+                    else{
+                        req.flash('success', `Credit Card Validation Successful!`)
+                        res.redirect('/')
+                    }
+                }
+                else if(req.body.cvv.length != 3){
+                    req.flash('error', `CVV for non-American Express cards must have 3 digits!`)
                     res.redirect('/')
                 }
                 else{
                     req.flash('success', `Credit Card Validation Successful!`)
                     res.redirect('/')
                 }
-            }
-            else if(req.body.cvv.length != 3){
-                req.flash('error', `CVV for non-American Express cards must have 3 digits!`)
-                res.redirect('/')
-            }
-            else{
-                req.flash('success', `Credit Card Validation Successful!`)
-                res.redirect('/')
             }
         }
     }
