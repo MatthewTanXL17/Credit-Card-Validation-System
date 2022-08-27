@@ -50,72 +50,7 @@ app.post('/', (req,res)=>{
     let year = req.body.expiry.slice(3,5);
     let num = req.body.number.slice(0,2);
     let len = req.body.number.length
-    /*
-    if(month >= 0 && month <= 12){
-        if(year > moment().year().toString().substring(2) || (month > (moment().month() + 1) && year == (moment().year().toString().substring(2)))){
-            if(len >= 19){
-                if(num == 34 || num == 37){
-                    if(req.body.cvv.length == 4){
-                        req.flash('success', `Credit Card Successfully Validated!`)
-                        .redirect('/')
-                    }
-                    req.flash('error', `CVV for American Express cards must have 4 digits!`);
-                    res.redirect('/');
-                }
-                else if(num != 34 || num != 37){
-                    if(req.body.cvv.length == 3){
-                        req.flash('success', `Credit Card Successfully Validated!`)
-                        .redirect('/')
-                    }
-                    req.flash('error', `CVV for non-American Express cards must have 3 digits!`);
-                    res.redirect('/');
-                }
-                req.flash('error', `Card number must be between 16 - 19 digits long!`);
-                res.redirect('/');
-            }
-            req.flash('error', `Sorry, but your credit card has expired!`);
-            res.redirect('/');
-        }
-        else{
-            req.flash('error', `Month is invalid`);
-            res.redirect('/');
-        }
-    }
-    */
-    /*
-    if(month == 0 || month > 12){
-        req.flash('error', `Month is invalid`);
-        res.redirect('/');
-    }
-    else if(year < moment().year().toString().substring(2) || (month < (moment().month() + 1) && year == (moment().year().toString().substring(2)))){
-        req.flash('error', `Sorry, but your credit card has expired!`);
-        res.redirect('/');
-    }
-    else{
-        req.flash('success', `Success!`)
-        res.redirect('/')
-    }
-    /*
-    if(num == 34 || num == 37){
-        if(req.body.cvv.length != 4){
-            req.flash('error', `CVV for American Express cards have 4 digits!`);
-            res.redirect('/');
-        }
-        req.flash('success', `American Express!`)
-        res.redirect('/')
-    }
-    else if(req.body.cvv.length != 3){
-        req.flash('error', `CVV for non-American Express cards have 3 digits!`);
-        res.redirect('/');
-    }
-    if(len <19){
-        req.flash('error', `Card number must be between 16 - 19 digits long!`);
-        res.redirect('/');
-    }
-    else{
-        req.flash('success', `American Express!`)
-        res.redirect('/')
-    }*/
+    
     if(month == 0 || month > 12){
         req.flash('error', `Month is invalid`)
         res.redirect('/')
@@ -135,8 +70,10 @@ app.post('/', (req,res)=>{
                     req.flash('error', `CVV for American Express cards must have 4 digits!`)
                     res.redirect('/')
                 }
-                req.flash('success', `Credit Card Validation Successful!`)
-                res.redirect('/')
+                else{
+                    req.flash('success', `Credit Card Validation Successful!`)
+                    res.redirect('/')
+                }
             }
             else if(req.body.cvv.length != 3){
                 req.flash('error', `CVV for non-American Express cards must have 3 digits!`)
