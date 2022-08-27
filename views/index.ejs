@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment</title>
+
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
+
+</head>
+<body>
+    <% if(success && success.length) {%>
+        <div style="text-align: center" class="alert alert-success" role="alert">
+            <%= success %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+     
+    <% if(error && error.length) {%>
+        <div style="text-align: center" class="alert alert-danger" role="alert">
+            <%= error %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+    <div class="container">
+        <form action="http://127.0.0.1:5000/" method="post">
+            <div class="inputBox">
+                <label>Card Holder: <input type="text" required name="holder" class="card-holder-input" placeholder="Nathan"></label>
+            </div>
+            <div class="inputBox">
+                <label>Card Number: <input type="text" required name="number" class="card-number-input" placeholder="Card Number" data-mask="0000 0000 0000 0000 000"></label>
+            </div>
+            <div class="flexbox">
+                <div class="inputBox">
+                    <label>Expiry Date:
+                        <input type="text" required name="expiry" class="expiry-input" placeholder="MM/YY" data-mask="00/00">
+                    </label>
+                </div>
+                <div class="inputBox">
+                    <label>CVV: <input type="text" required name="cvv" maxlength="4" class="cvv-input" placeholder="000 / 0000" data-mask="0000"></label>
+                </div>
+            </div>
+            <input type="submit" value="submit" class="submit-btn">
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous" defer="" data-deferred="1"></script> 
+
+    
+</body>
+</html>
