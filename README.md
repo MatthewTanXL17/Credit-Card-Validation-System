@@ -25,4 +25,4 @@ Open [http://localhost:5000](http://localhost:5000) and you will be directed to 
 
 # Stopping the express server
 
-To stop the express server, type Ctrl + C in the terminal and press y.
+To stop the express server, type Ctrl + C in the terminal, then type y and enter.
