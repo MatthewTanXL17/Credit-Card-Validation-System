@@ -1,12 +1,12 @@
-## Hivekind Evaluation - Credit Card Validation System
+## Credit Card Validation System
 
 # Setup
 
 Clone the repo and install the dependencies.
 
 ```bash
-git clone https://github.com/MatthewTanXL17/hivekind-evaluation.git
-cd hivekind-evaluation
+git clone https://github.com/MatthewTanXL17/Credit-Card-Validation-System.git
+cd Credit-Card-Validation-System
 ```
 
 ```bash
